@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>Smart House Demo</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='home.png') }}" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/vue_app.js') }}"></script>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            const vueApp = rootApp.mount('#rootApp')
+            var socket = io()
+            socket.on("JSON", (msg) => { vueApp.addAlerts(JSON.parse(msg))})
+        }
+    </script>
+</head>
+
+<body>
+    <div id="rootApp">
+        <div class="headerDiv">
+            <div class="logo">
+                <h3>Smart House Demo</h3>
+            </div>
+            <div class="account">
+                <h4 style="margin-right: 2vw; padding: 0;">[[ clientConfig.userName ]]</h4>
+                <div class="settings" @click="this.openSettings">
+                    <img src="{{ url_for('static', filename='gear-white.png') }}" class="img-settings-def">
+                    <img src="{{ url_for('static', filename='gear-blue.png') }}" class="img-settings-hover">
+                </div>
+            </div>
+        </div>
+        <div class="mainContentDiv">
+            <sensors-container v-for="sensorType in sensorTypes" :sensors="sensorType"></sensors-container>
+        </div>
+        <div class="alertsContainer">
+            <sensor-alert v-for="alertData in alerts" :sensor="alertData"></sensor-alert>
+        </div>
+        <div class="settingsContainer" v-show="this.showSettings" @click="this.showSettings = false">
+            <div class="settingsPanel" @click.stop="">
+                <p style="margin: 5px;">Common</p>
+                <div class="settingsBlock">
+                    <div class="settingsTile">
+                        <div class="sensorAlias" style="font-size: 16;">
+                            User name:
+                        </div>
+                        <input v-model="tempName" style="margin: 5px;" type="text">
+                        <button style="margin: 10px;" @click.stop="setUserName">Save</button> 
+                    </div>                
+                </div>
+                <p style="margin: 5px;">Hidden sensors</p>
+                <div class="settingsBlock">
+                    <template v-for="(sens, name) in clientConfig.sensorsConfig">
+                        <div class="settingsTile" style="height: 10vh;" v-if="!sens.visibility">
+                            <sensor-setting :alias="sens.alias" :sensor="name"></sensor-setting>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>        
+</div>
+</body>
+
+</html>

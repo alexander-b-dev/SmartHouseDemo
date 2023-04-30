@@ -1,0 +1,247 @@
+body, div {
+    background-color: #121212;
+    color: #FFAE4B;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+span{
+    display: inline-block;
+}
+
+p{
+    color: #FFAE4B;
+}
+
+button{
+    color: white;
+    background-color: #4165FF;
+    border: 0;
+    box-shadow: none;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
+}
+
+input, textarea, select{    
+    color: #FFAE4B;
+    background-color: black;
+    border-color: #FFAE4B;
+    border-radius: 7px;
+    border-width: 1px;
+    border-style: solid;
+    outline: none;
+}
+
+.headerDiv{
+    background-color: #202020;
+    position: relative;
+    width: 100vw;
+    height: 8vh;
+}
+
+.logo{
+    background-color: inherit;
+    margin-left: 1vw;
+    margin-right: 7vw;
+    display: inline-block;
+}
+
+.account{
+    display: inline-flex; 
+    justify-content: flex-end; 
+    background-color: inherit;
+    float: right;
+}
+
+.settings{    
+    position: relative;
+    display: inline-block;
+    background-color: #4165FF;
+    margin-right: 1vw;
+    margin-top: 1.5vh;
+    width: 6vw;
+    height: 5vh;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #4165FF;
+}
+
+.settings:hover {
+    background-color: #121212;
+}
+
+.settings:hover .img-settings-def{
+    visibility: hidden;
+}
+
+.img-settings-def{
+    height: 4vh;
+    position: absolute;
+    left: calc(3vw - 15px);
+    top: calc(2.3vh - 15px);
+    z-index: 2;
+}
+
+.img-settings-hover{
+    height: 4vh;
+    position: absolute;
+    left: calc(3vw - 15px);
+    top: calc(2.3vh - 15px);
+    z-index: 0;
+}
+
+.mainContentDiv{
+    height: 92vh;
+    width: 100%;    
+}
+
+.sensorsContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 1vh 1vw 1vh 1vw;
+    border-style: dashed;
+    border-color: #FFAE4B;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+.sensor{
+    flex-grow: 0;
+    width: 14.2vw;
+    height: 19vh;
+    margin: 1vh 1vw 1vh 1vw;
+    font-size: 0;
+}
+
+.sensorTileNormal{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    font-size: 18;
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.sensorTileAlert{
+    background-color: #F10000;
+    color: black;
+}
+
+.sensorPic{
+    background-color: inherit;
+    display: flex;
+    justify-content: center;
+}
+
+.sensorVal{
+    background-color: inherit;
+    width: 100%;
+    text-align: center;
+    color: inherit;
+}
+
+
+.sensorAlias{
+    width: 100%;
+    font-size: 20;
+    text-align: center;
+    color: inherit;
+    background-color: inherit;
+}
+
+.alertsContainer{
+    position: absolute;
+    z-index: 2;
+    bottom: 2vh;
+    right: 2vw;
+    max-height: 50vh;
+    font-size: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+}
+
+.alert{
+    flex: 1;
+    width: 20vw;
+    min-height: 4vh;
+    margin: 1vh 1vw 1vh 1vw;
+    font-size: 16;
+    background-color: #202020;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alertText{
+    margin:0; 
+    color: #FFAE4B;
+}
+
+.settingsContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    z-index: 3;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settingsPanel{
+    background-color: #121212;
+    padding: 1vh 1vw 1vh 1vw;
+    border-radius: 10px;
+    width: 50vw;
+    height: 70vh;
+}
+
+.settingsBlock{
+    background-color: inherit;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: dashed;
+    padding: 5px;
+}
+
+.settingsTile{
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    height: 15vh;
+    border-radius: 5px;
+    margin: 1vh 1vw 1vh 1vw;
+    background-color: #202020;
+    justify-content: space-around;
+}
+
+.settingsText{
+    margin: 0;
+    font-size: 16;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: #202020;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background-color: #FFAE4B; 
+    border-radius: 20px;
+  }
